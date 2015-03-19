@@ -5,7 +5,7 @@ header("Content-Type: application/json");
         $data = (array)$data;
         $numOptions = sizeof($data["options"]);
         $result = array("status" => "OK", "numOptions" => $numOptions);
-        array_push($result, "result" => "sweg");
+        array_push($result, array("result" => "sweg"));
         echo json_encode($data);
     } else {
     
