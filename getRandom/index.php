@@ -1,7 +1,7 @@
 <?php
-    if(isset($_POST['data'])){
-        $data = json_decode($_POST['data']);
+    if(isset($_GET['data'])){
+        $data = json_decode($_GET['data']);
         echo json_encode($data);
     }
-echo "hello grithub";
+
 ?>
