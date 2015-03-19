@@ -1,7 +1,7 @@
 <?php
-header("Content-Type: application/json");
-    if(isset($_GET['data'])){
-        $data = json_decode($_GET['data']);
+    header("Content-Type: application/json");
+    if(isset($_POST['data'])){
+        $data = json_decode($_POST['data']);
         $data = (array)$data;
         $numOptions = sizeof($data["options"]);
         $result = array("status" => "OK", "numOptions" => $numOptions, "result" => array());

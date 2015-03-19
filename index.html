@@ -3,13 +3,27 @@
     <title>Randomiser</title>
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.3.min.js" ></script>
     <script>
-        $(function(){
-            alert("hey");
+        var options = {};
+        $("#add").click(function(e){
+            $("#content").append("<input type='text' class='option' />");
+        });
+        $("#go").click(function(e){
+            $(".option").each(function(index, element){
+                options.push($(element).val());
+            });
+            $.post("/getRandom/", {"data": options}, function(data){
+                data = $.parseJSON(data);
+                $("#result").html(data.result);
+            });
         });
     </script>
     </head>
     <body>
-    
+        <div id="content">
+            <input type="text" class="option" />
+        </div>
+        <button id="add" data-inline="true">More</button><button id="go">Go</button>
+        <div id="result"></div>
     </body>
 
 </html>
