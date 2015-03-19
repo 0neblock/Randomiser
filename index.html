@@ -12,8 +12,8 @@
                 $(".option").each(function(index, element){
                     options.push($(element).val());
                 });
-                $.post("/getRandom/", {"data": options}, function(data){
-                    data = $.parseJSON(data);
+                $.getJSON("/getRandom/?data=" + options}, function(data){
+                    console.log(data);
                     $("#result").html(data.result);
                 });
             });
