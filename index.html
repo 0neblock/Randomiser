@@ -4,16 +4,18 @@
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.3.min.js" ></script>
     <script>
         var options = {};
-        $("#add").click(function(e){
-            $("#content").append("<input type='text' class='option' />");
-        });
-        $("#go").click(function(e){
-            $(".option").each(function(index, element){
-                options.push($(element).val());
+        $(function(){
+            $("#add").click(function(e){
+                $("#content").append("<input type='text' class='option' />");
             });
-            $.post("/getRandom/", {"data": options}, function(data){
-                data = $.parseJSON(data);
-                $("#result").html(data.result);
+            $("#go").click(function(e){
+                $(".option").each(function(index, element){
+                    options.push($(element).val());
+                });
+                $.post("/getRandom/", {"data": options}, function(data){
+                    data = $.parseJSON(data);
+                    $("#result").html(data.result);
+                });
             });
         });
     </script>
