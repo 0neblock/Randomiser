@@ -4,19 +4,18 @@
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.3.min.js" ></script>
     <script>
         $(function(){
+            $("#first").focus();
             $("#add").click(function(e){
-                $("#content").append("<input type='text' class='option' />");
+                $("#content").append("<input type='text' class='option' /><br />");
             });
             $("#go").click(function(e){
-                console.log("hello");
                 var options = [];
                 $(".option").each(function(index, element){
                     options.push($(element).val());
                 });
-                console.log("/getRandom/?data=" + {"options":options});
                 $.getJSON("/getRandom/?data=" + JSON.stringify({"options":options}), function(data){
                     console.log(data);
-                    $("#result").html(data.result);
+                    $("#result").html("<b>" + data.result + "</b>");
                 });
             });
         });
@@ -24,9 +23,10 @@
     </head>
     <body>
         <div id="content">
-            <input type="text" class="option" />
+            <input type="text" class="option" id="first"/><br />
         </div>
         <button id="add" data-inline="true">More</button><button id="go">Go</button>
+        <br />
         <div id="result"></div>
     </body>
 
